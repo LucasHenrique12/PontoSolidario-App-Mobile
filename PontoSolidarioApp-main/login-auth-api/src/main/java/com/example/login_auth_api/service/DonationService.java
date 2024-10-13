@@ -4,9 +4,10 @@ import com.example.login_auth_api.domain.Donation;
 import com.example.login_auth_api.domain.User;
 import com.example.login_auth_api.repositories.DonationRepository;
 import com.example.login_auth_api.repositories.UserRepository;
-
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -15,41 +16,44 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 @RequiredArgsConstructor
 public class DonationService {
+
     @Autowired
     private DonationRepository donationRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    public void registerDonation(Donation donation, @AuthenticationPrincipal UserDetails userDetails) {
-        if (userDetails == null) {
-            throw new RuntimeException("Usuário não autenticado"); // Lança uma exceção se o usuário não estiver autenticado
+
+    @Transactional
+    public void registerDonation(Donation donation, User currentUser) {
+        if (currentUser == null) {
+            throw new RuntimeException("Usuário não autenticado");
         }
 
-        String email = userDetails.getUsername(); // Obter o email do usuário
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        donation.setUserId(user.getId()); // Define o ID do usuário na doação
-        donation.setDataHora(LocalDateTime.now()); // Define a data e hora da doação
-        donation.setDonationPlaceId(donation.getDonationPlaceId()); // Define o ID do local de doação
+        String email = currentUser.getEmail();
 
-        donationRepository.save(donation); // Salva a doação
+        donation.setUserId(currentUser.getId());
+        donation.setDataHora(LocalDateTime.now());
+
+        donationRepository.save(donation);
     }
 
-    public List<Donation> findAllDonations() {
-        return donationRepository.findAll();
+    public List<Donation> findDonationsByUserId(String userId) {
+        return donationRepository.findByUserId(userId);
     }
 
-    public Optional<Donation> findDonationById(String id) {
-        return donationRepository.findById(id);
-    }
 
-    public void deleteDonationById(String id) {
-        donationRepository.deleteById(id);
+//
+//    public Optional<Donation> findDonationById(String id) {
+//        return donationRepository.findById(id);
+//    }
+//
+//    public void deleteDonationById(String id) {
+//        donationRepository.deleteById(id);
+//    }
+//}
     }
-}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/views/DonationPlaceDetails.dart';
 import 'package:mobile_app/views/login_page.dart';
 import 'package:mobile_app/services/auth_service.dart';
 import 'package:mobile_app/views/profile_page.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/register':(context) => RegisterPage(),
         '/profile':(context) => ProfilePage(),
+
       },
     );
   }

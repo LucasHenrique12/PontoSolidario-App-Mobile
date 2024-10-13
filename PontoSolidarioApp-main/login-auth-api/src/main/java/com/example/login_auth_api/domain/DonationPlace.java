@@ -21,4 +21,6 @@ public class DonationPlace {
     private String longitude;
     private String address;
 
+
+
 }

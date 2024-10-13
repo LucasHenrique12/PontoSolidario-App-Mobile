@@ -26,7 +26,7 @@ class AuthService {
 
       // Armazenar o token no armazenamento local
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', token);
+      await prefs.setString('token', token); // Salvar token JWT
       return true;
     } else {
       return false;
@@ -44,18 +44,27 @@ class AuthService {
         headers: {"Content-Type": "application/json"},
       );
 
-      return true;
+      if (response.statusCode == 200) {
+        final responseBody = jsonDecode(response.body);
+        final token = responseBody['token'];
+
+        // Armazenar o token após o registro (caso seja retornado pelo backend)
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', token);
+        return true;
+      } else {
+        return false;
+      }
     } catch (e) {
       print('Erro ao registrar: $e');
       return false;
     }
   }
 
-
   // Logout do usuário
   Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('token');
+    await prefs.remove('token');  // Remover o token JWT do armazenamento local
   }
 
   // Obter o token JWT armazenado

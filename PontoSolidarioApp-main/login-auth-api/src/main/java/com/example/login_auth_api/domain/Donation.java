@@ -21,5 +21,5 @@ public class Donation {
     private String userId;
     private String donationPlaceId;
     private LocalDateTime dataHora;
-    private int donationType;
+    private String donationType;
 }

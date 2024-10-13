@@ -17,6 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class DonationPlaceService {
     @Autowired
     private DonationPlaceRepository donationPlaceRepository;
@@ -76,6 +77,28 @@ public class DonationPlaceService {
         }
     }
 
+    public List<DonationPlaceDTO> findDonationPlacesByDonationType(String donationTypeId) {
+        List<DonationPlace> donationPlaceList = donationPlaceRepository.findAll();
+        List<DonationPlaceDTO> donationPlaceDTOArrayList = new ArrayList<>();
+
+        for (DonationPlace donation : donationPlaceList) {
+            List<DonationPlaceDonationType> donationTypeLocationList = donationPlaceDonationTypeRepository.findAllByDonationPlaceId(donation.getId());
+            List<DonationType> donationLocationType = new ArrayList<>();
+
+            for (DonationPlaceDonationType donationTypePlace : donationTypeLocationList) {
+                DonationType donationType = donationTypeRepository.findById(donationTypePlace.getDonationTypeId()).orElse(null);
+                if (donationType != null) {
+                    donationLocationType.add(donationType);
+                }
+            }
+
+
+            if (donationLocationType.stream().anyMatch(type -> type.getId().equals(donationTypeId))) {
+                donationPlaceDTOArrayList.add(new DonationPlaceDTO(donation.getName(), donation.getLatitude(), donation.getLongitude(), donation.getAddress(), donationLocationType));
+            }
+        }
+        return donationPlaceDTOArrayList;
+    }
 
 }
 

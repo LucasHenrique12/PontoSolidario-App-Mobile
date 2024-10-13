@@ -68,5 +68,9 @@ private DonationPlaceService donationPlaceService;
         }
     }
 
+    @GetMapping("/filterType/{donationTypeId}")
+    public List<DonationPlaceDTO> getDonationPlacesByType(@PathVariable String donationTypeId) {
+        return donationPlaceService.findDonationPlacesByDonationType(donationTypeId);
+    }
 
 }

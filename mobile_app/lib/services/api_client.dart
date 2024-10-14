@@ -6,7 +6,7 @@ class ApiClient {
   final String _baseUrl = 'http://192.168.0.105:8080';
   final AuthService _authService = AuthService();
 
-  // Método para fazer requisições GET autenticadas
+
   Future<http.Response> get(String endpoint) async {
     final token = await _authService.getToken();
     final url = Uri.parse('$_baseUrl/$endpoint');

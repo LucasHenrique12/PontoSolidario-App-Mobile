@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
 final AuthService _authService = AuthService();
-bool _isPasswordVisible = false; // Estado para controlar a visibilidade da senha
+bool _isPasswordVisible = false;
 
 @override
 Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ backgroundColor: Colors.teal,
 body: Padding(
 padding: const EdgeInsets.all(16.0),
 child: Column(
-mainAxisAlignment: MainAxisAlignment.center, // Centraliza verticalmente
+mainAxisAlignment: MainAxisAlignment.center,
 children: [
 Icon(Icons.login, size: 64, color: Colors.teal),
 SizedBox(height: 20),
@@ -54,21 +54,21 @@ _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
 ),
 onPressed: () {
 setState(() {
-_isPasswordVisible = !_isPasswordVisible; // Alterna visibilidade
+_isPasswordVisible = !_isPasswordVisible;
 });
 },
 ),
 ),
-obscureText: !_isPasswordVisible, // Controla a visibilidade da senha
+obscureText: !_isPasswordVisible,
 ),
 SizedBox(height: 20),
 ElevatedButton(
 onPressed: _login,
 style: ElevatedButton.styleFrom(
 backgroundColor: Colors.teal,
-padding: EdgeInsets.symmetric(vertical: 15), // Aumenta o tamanho do botão
+padding: EdgeInsets.symmetric(vertical: 15),
 shape: RoundedRectangleBorder(
-borderRadius: BorderRadius.circular(10), // Borda arredondada
+borderRadius: BorderRadius.circular(10),
 ),
 ),
 child: Text('Login', style: TextStyle(fontSize: 18)),
@@ -121,7 +121,7 @@ MaterialPageRoute(builder: (context) => RegisterPage()),
 }
 
 void _resetPassword() {
-// Lógica para redefinir senha
+
 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
 content: Text('Função de redefinir senha não implementada.'),
 ));

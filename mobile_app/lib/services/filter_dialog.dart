@@ -6,7 +6,7 @@ class FilterDialog {
       String? selectedDonationTypeId,
       Function(String) onFilterSelected,
       ) {
-    // Exemplo de tipos de doação. Substitua pelos IDs reais
+
     List<Map<String, String>> donationTypes = [
       {'id': 'alimento', 'name': 'Alimento'},
       {'id': 'racao', 'name': 'Ração'},
@@ -23,11 +23,11 @@ class FilterDialog {
               children: donationTypes.map((type) {
                 return RadioListTile(
                   title: Text(type['name']!),
-                  value: type['id'], // Aqui você deve usar o ID real do tipo de doação
-                  groupValue: selectedDonationTypeId, // Mantém o valor selecionado
+                  value: type['id'],
+                  groupValue: selectedDonationTypeId,
                   onChanged: (value) {
-                    onFilterSelected(value.toString()); // Chama a função de filtro
-                    Navigator.of(context).pop(); // Fecha o diálogo
+                    onFilterSelected(value.toString());
+                    Navigator.of(context).pop();
                   },
                 );
               }).toList(),
@@ -37,7 +37,7 @@ class FilterDialog {
             TextButton(
               child: Text('Fechar'),
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
+                Navigator.of(context).pop();
               },
             ),
           ],

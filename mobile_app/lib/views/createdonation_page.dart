@@ -53,11 +53,11 @@ class _CreateDonationPageState extends State<CreateDonationPage> {
     }*/
   }
 
-  // Exibir popup de confirmação
+
   Future<void> _showSuccessDialog() async {
     showDialog(
       context: context,
-      barrierDismissible: false, // Não fechar o dialog ao clicar fora
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Sucesso!"),
@@ -66,8 +66,8 @@ class _CreateDonationPageState extends State<CreateDonationPage> {
             TextButton(
               child: Text("OK"),
               onPressed: () {
-                Navigator.of(context).pop(); // Fechar o popup
-                _navigateToHomePage(); // Redirecionar para a homepage
+                Navigator.of(context).pop();
+                _navigateToHomePage();
               },
             ),
           ],
@@ -81,7 +81,7 @@ class _CreateDonationPageState extends State<CreateDonationPage> {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => HomePage()),
-          (Route<dynamic> route) => false, // Remove todas as páginas anteriores
+          (Route<dynamic> route) => false,
     );
   }
 

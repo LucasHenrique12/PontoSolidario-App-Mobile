@@ -22,7 +22,7 @@ public class UserController {
 
 
 
-    // Método para obter o usuário atual autenticado
+
     private User getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
 

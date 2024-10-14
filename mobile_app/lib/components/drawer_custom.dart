@@ -45,8 +45,8 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.favorite),  // Ícone de doação
-            title: Text('Minhas Doações'),  // Nome da página
+            leading: Icon(Icons.favorite),
+            title: Text('Minhas Doações'),
             onTap: () {
               Navigator.push(
                 context,
@@ -59,7 +59,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
             onTap: () {
-              _logout(context);  // Chama o método de logout
+              _logout(context);
             },
           ),
         ],
@@ -70,7 +70,7 @@ class CustomDrawer extends StatelessWidget {
   void _logout(BuildContext context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LoginPage()),  // Redireciona para a página de login
+      MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
 }

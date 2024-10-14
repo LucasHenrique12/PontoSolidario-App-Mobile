@@ -47,13 +47,5 @@ public class DonationService {
     }
 
 
-//
-//    public Optional<Donation> findDonationById(String id) {
-//        return donationRepository.findById(id);
-//    }
-//
-//    public void deleteDonationById(String id) {
-//        donationRepository.deleteById(id);
-//    }
-//}
+
     }

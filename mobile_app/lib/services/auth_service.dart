@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_app/models/user.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 class AuthService {
-  final String _baseUrl = 'http://192.168.0.105:8080';  // URL da sua API
+  final String _baseUrl = 'http://192.168.0.105:8080';
 
 
   Future<bool> login(String email, String password) async {

@@ -55,16 +55,5 @@ public class DonationController {
 
 
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Donation> getDonationById(@PathVariable String id) {
-//    Optional<Donation> donation = donationService.findDonationById(id);
-//        return donation.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-//    }
-//
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteDonation(@PathVariable String id) {
-//        donationService.deleteDonationById(id);
-//        return ResponseEntity.noContent().build();
-//    }
+
 

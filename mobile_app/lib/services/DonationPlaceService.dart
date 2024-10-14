@@ -17,7 +17,7 @@ class DonationPlaceService {
       Uri.parse(apiUrl),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token', // Adiciona o token JWT no cabeçalho
+        'Authorization': 'Bearer $token',
       },
     );
 
@@ -39,7 +39,7 @@ class DonationPlaceService {
       Uri.parse('$apiUrl/filterType/$donationTypeId'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token', // Adicione aqui o token de autenticação
+        'Authorization': 'Bearer $token',
       },
     );
 
@@ -47,7 +47,7 @@ class DonationPlaceService {
       List<dynamic> data = json.decode(response.body);
       return data.map((place) => DonationPlace.fromJson(place)).toList();
     } else {
-      print('Erro ao buscar dados: ${response.statusCode}, ${response.body}'); // Adicione essa linha para depuração
+      print('Erro ao buscar dados: ${response.statusCode}, ${response.body}');
       throw Exception('Erro ao buscar locais de doação:  ${response.statusCode}');
     }
   }

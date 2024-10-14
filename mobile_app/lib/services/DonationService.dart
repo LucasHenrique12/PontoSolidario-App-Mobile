@@ -36,13 +36,13 @@ class DonationService {
 
 
     Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
-    String userId = decodedToken['userId']; // Substitua 'userId' pela chave correta no token JWT
+    String userId = decodedToken['userId'];
 
     // Fazendo a chamada para o endpoint
     final response = await http.get(
       Uri.parse('$apiUrl/user/$userId'),
       headers: {
-        'Authorization': 'Bearer $token', // Incluindo o token JWT no header
+        'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
     );

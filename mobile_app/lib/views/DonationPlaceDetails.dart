@@ -71,7 +71,7 @@ class DonationPlaceDetails extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Navegar para a tela de doação
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(

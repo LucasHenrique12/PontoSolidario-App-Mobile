@@ -20,7 +20,7 @@ class ApiClient {
     );
   }
 
-  // Método para fazer requisições POST autenticadas
+
   Future<http.Response> post(String endpoint, Map<String, dynamic> data) async {
     final token = await _authService.getToken();
     final url = Uri.parse('$_baseUrl/$endpoint');

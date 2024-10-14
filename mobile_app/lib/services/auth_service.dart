@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile_app/models/user.dart';
-
+import 'package:jwt_decoder/jwt_decoder.dart';
 class AuthService {
   final String _baseUrl = 'http://192.168.0.105:8080';  // URL da sua API
 
-  // Login do usuário
+
   Future<bool> login(String email, String password) async {
     final url = Uri.parse('$_baseUrl/auth/login');
     final response = await http.post(
@@ -24,16 +24,16 @@ class AuthService {
       final responseBody = jsonDecode(response.body);
       final token = responseBody['token'];
 
-      // Armazenar o token no armazenamento local
+
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', token); // Salvar token JWT
+      await prefs.setString('token', token);
       return true;
     } else {
       return false;
     }
   }
 
-  // Registro do usuário
+
   Future<bool> register(User user) async {
     var url = Uri.parse('$_baseUrl/auth/register');
 
@@ -48,7 +48,7 @@ class AuthService {
         final responseBody = jsonDecode(response.body);
         final token = responseBody['token'];
 
-        // Armazenar o token após o registro (caso seja retornado pelo backend)
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', token);
         return true;
@@ -61,19 +61,29 @@ class AuthService {
     }
   }
 
-  // Logout do usuário
-  Future<void> logout() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('token');  // Remover o token JWT do armazenamento local
+
+  Future<String?> getUserIdFromToken() async {
+    String? token = await getToken();
+    if (token != null) {
+      Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+      return decodedToken['id'];
+    }
+    return null;
   }
 
-  // Obter o token JWT armazenado
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('token');
+  }
+
+
   Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('token');
   }
 
-  // Método para verificar se o usuário está logado
+
   Future<bool> isLoggedIn() async {
     final token = await getToken();
     return token != null;

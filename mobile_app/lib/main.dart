@@ -5,6 +5,7 @@ import 'package:mobile_app/services/auth_service.dart';
 import 'package:mobile_app/views/profile_page.dart';
 import 'package:mobile_app/views/register_page.dart';
 import 'package:mobile_app/views/home_page.dart';
+
 void main() {
   runApp(MyApp());
 }

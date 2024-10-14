@@ -13,7 +13,7 @@ class CustomDrawer extends StatelessWidget {
         children: <Widget>[
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blueAccent,
+              color: Colors.teal,
             ),
             child: Text(
               'Bem-vindo!',

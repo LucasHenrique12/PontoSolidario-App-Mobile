@@ -22,4 +22,6 @@ class DonationPlace {
       donationTypes: List<String>.from(json['listTypes'].map((type) => type['name'])),
     );
   }
+
+
 }

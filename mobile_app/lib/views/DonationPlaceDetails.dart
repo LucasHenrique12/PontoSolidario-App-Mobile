@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/views/createdonation_page.dart';
 import '../models/DonationPlace.dart';
+
 
 class DonationPlaceDetails extends StatelessWidget {
   final DonationPlace donationPlace;
@@ -66,11 +68,16 @@ class DonationPlaceDetails extends StatelessWidget {
                 ),
               ),
             SizedBox(height: 20),
-            // Centraliza o botão "Ver no Mapa"
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Ação para o botão (ex: abrir mapa)
+                  // Navegar para a tela de doação
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CreateDonationPage(donationPlace: donationPlace),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
@@ -80,7 +87,7 @@ class DonationPlaceDetails extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Ver no Mapa',
+                  'Doar',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),

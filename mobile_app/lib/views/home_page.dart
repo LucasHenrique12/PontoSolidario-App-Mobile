@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Locais de Doação', style: TextStyle(fontSize: 24)),
-        backgroundColor: Colors.teal, // Cor personalizada
+        backgroundColor: Colors.teal,
         actions: [
           IconButton(
             icon: Icon(Icons.filter_list, size: 30),
@@ -78,9 +78,9 @@ class _HomePageState extends State<HomePage> {
                   final donationPlace = snapshot.data![index];
                   return Card(
                     elevation: 4,
-                    margin: EdgeInsets.symmetric(vertical: 8), // Espaçamento entre os cartões
+                    margin: EdgeInsets.symmetric(vertical: 8),
                     child: ListTile(
-                      title: Text(donationPlace.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      title: Text(donationPlace.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                       subtitle: Text('Clique para detalhes', style: TextStyle(color: Colors.grey[600])),
                       onTap: () {
                         Navigator.push(

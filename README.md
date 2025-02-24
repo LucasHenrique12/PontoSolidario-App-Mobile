@@ -35,3 +35,4 @@ Listagem de locais de doação e detalhes
 Mapa interativo para encontrar pontos de doação próximos
 
 Registro de doações realizadas pelos usuários
+

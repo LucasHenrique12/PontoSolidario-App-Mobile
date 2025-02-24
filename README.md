@@ -1,4 +1,4 @@
-Ponto Solidário
+# Ponto Solidário
 
 O Ponto Solidário é um aplicativo que conecta pessoas a locais de doação, permitindo que encontrem facilmente pontos para contribuir com diferentes tipos de doações, como alimentos, roupas e ração para animais.
 

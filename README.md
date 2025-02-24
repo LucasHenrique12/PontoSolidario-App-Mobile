@@ -2,9 +2,9 @@
 
 O Ponto Solidário é um aplicativo que conecta pessoas a locais de doação, permitindo que encontrem facilmente pontos para contribuir com diferentes tipos de doações, como alimentos, roupas e ração para animais.
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-Backend
+## Backend
 
 Spring Boot: Framework para a construção da API REST
 
@@ -14,7 +14,7 @@ JWT (JSON Web Token): Autenticação segura
 
 Hibernate: ORM para manipulação do banco de dados
 
-Frontend (Mobile)
+## Frontend (Mobile)
 
 Flutter: Framework para desenvolvimento do aplicativo
 
@@ -24,7 +24,7 @@ Google Maps API: Integração para exibição de mapas e localização dos ponto
 
 Supabase: Backend-as-a-service para autenticação e banco de dados
 
-Funcionalidades
+## Funcionalidades
 
 Cadastro e login de usuários
 
